@@ -1,28 +1,24 @@
+import { useState } from "react";
+
+import Loader from "./components/Loader";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Loader from "./components/Loader";
-import Cursor from "./components/Cursor";
-import ImageReveal from "./components/ImageReveal";
-
-import useLenis from "./hooks/useLenis";
-import useScrollAnimations from "./hooks/useScrollAnimations";
 
 function App() {
-
-  useLenis();
-  useScrollAnimations();
+  const [loading, setLoading] = useState(true);
 
   return (
     <>
-      <Loader />
-      <Cursor />
+      {loading && (
+        <Loader onComplete={() => setLoading(false)} />
+      )}
 
-      <Navbar />
-
-      <Hero />
-
-      <ImageReveal />
-
+      {!loading && (
+        <>
+          <Navbar />
+          <Hero />
+        </>
+      )}
     </>
   );
 }

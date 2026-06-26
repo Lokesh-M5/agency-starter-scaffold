@@ -1,81 +1,84 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-export default function Loader() {
-  const loader = useRef();
+export default function Loader({ onComplete }) {
+  const loaderRef = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({
+      defaults: {
+        ease: "power3.inOut",
+      },
+      onComplete: () => {
+        if (onComplete) onComplete();
+      },
+    });
 
-    tl.from(".bg-word", {
+    tl.from(".loader-content", {
       opacity: 0,
-      duration: 1.2,
-      stagger: 0.15,
-    })
+      y: 40,
+      duration: 0.8,
+    });
 
-      .from(
-        ".loader-top",
-        {
-          y: 25,
-          opacity: 0,
-          duration: 0.8,
-        },
-        "-=0.8"
-      )
+    tl.to(
+      ".scan-light",
+      {
+        x: window.innerWidth + 700,
+        duration: 2.8,
+      },
+      0.2
+    );
 
-      .from(
-        ".loader-title",
-        {
-          y: 80,
-          opacity: 0,
-          scale: 0.9,
-          duration: 1.2,
-          ease: "power4.out",
-        },
-        "-=0.4"
-      )
-
-      .from(
-        ".loader-subtitle",
-        {
-          y: 20,
-          opacity: 0,
-          duration: 0.8,
-        },
-        "-=0.8"
-      )
-
-      .from(
-        ".loader-loading",
-        {
-          opacity: 0,
-          duration: 0.5,
-        },
-        "-=0.5"
-      )
-
-      .to(".progress-fill", {
-        width: "100%",
-        duration: 2.2,
-        ease: "power2.inOut",
-      })
-
-      .to(".invert", {
-        scaleY: 1,
-        duration: 0.55,
-        ease: "power2.inOut",
-      })
-
-      .to(loader.current, {
+    tl.to(
+      loaderRef.current,
+      {
         opacity: 0,
-        duration: 0.4,
-        pointerEvents: "none",
-      });
-  }, []);
+        duration: 0.8,
+      },
+      "+=0.2"
+    );
+  }, [onComplete]);
 
   return (
-    <div className="loader" ref={loader}>
-        <h1>ARC Studio</h1>
+    <div className="loader" ref={loaderRef}>
+      {/* Background Text */}
+      <div className="loader-background">
+        <span>Arc Studio</span>
+        <span>Arc Studio</span>
+        <span>Arc Studio</span>
+        <span>Arc Studio</span>
+      </div>
+
+      {/* Moving Light */}
+      <div className="scan-light"></div>
+
+      {/* Content */}
+      <div className="loader-content">
+        <p className="loader-small">
+          CREATIVE DIGITAL STUDIO
+        </p>
+
+        <div className="title-wrapper">
+          <h1 className="loader-title loader-title-gradient">
+            Arc Studio
+          </h1>
+        </div>
+
+        <p className="loader-sub">
+          DESIGN • DEVELOPMENT • BRANDING
+        </p>
+      </div>
+
+      {/* Loading */}
+      <div className="loader-loading">
+        <span>LOADING</span>
+
+        <div className="loader-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </div>
   );
 }

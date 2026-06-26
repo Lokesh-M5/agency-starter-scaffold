@@ -2,7 +2,9 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="container nav-container">
-        <h2>ARC Studio</h2>
+        <h2 className="logo">
+            Arc Studio
+        </h2>
 
         <ul className="nav-links">
           <li>Work</li>
