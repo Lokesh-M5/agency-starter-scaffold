@@ -1,70 +1,71 @@
+import "./Hero.css";
+
 export default function Hero() {
   return (
-    <section className="hero">
+    <section className="arc-hero">
 
-      <div className="hero-bg-text">
-          <span>ARC</span>
-          <span>STUDIO</span>
+      <div className="arc-nav">
+        <div className="logo">ARC</div>
+
+        <button className="menu-btn">
+          <span />
+          <span />
+          <span />
+        </button>
       </div>
 
-      <div className="container hero-layout">
+      <div className="hero-content">
 
-          <div className="hero-content">
+        <h1>
+          Arc is an Events and Brand Experience Agency.
+          For over 20 years, we've been creating lasting memories.
+          Experience has taught us how to make everything run smoothly,
+          exceptionally well.
+          But above all, it has given us the sensitivity to help each
+          brand find its own unique voice.
+          <span>
+            {" "}
+            We immerse ourselves in their essence and transform it into
+            experiences that truly connect.
+          </span>
+        </h1>
 
-              <span className="hero-small fade-up">
-                  DIGITAL DESIGN AGENCY
-              </span>
+      </div>
 
-              <h1 className="hero-title fade-up">
-                  Building
-                  <br />
-                  Digital
-                  <br />
-                  Experiences
-              </h1>
+      <div className="hero-bottom">
 
-              <p className="hero-description fade-up">
-                  We create premium digital products,
-                  websites and visual experiences using
-                  thoughtful design and cutting-edge
-                  technology.
-              </p>
+        <div className="hero-left">
 
-              <button className="hero-btn fade-up">
-                  <span></span>
-                  View Projects
-              </button>
+          <p>
+            Welcome! We're Arc, and creating unique experiences is our
+            passion. Want to know what makes us different? Then don't
+            hesitate to take a look.
+          </p>
 
+          <button className="arc-btn">
+            Get to know us
+            <span>↗</span>
+          </button>
+
+        </div>
+
+        <div className="hero-video">
+
+          <img
+            src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819"
+            alt=""
+          />
+
+          <div className="play-button">
+            ▶
           </div>
 
-          <div className="hero-image fade-up">
+          <h3>Arc Showreel</h3>
 
-              <img
-                  src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1200&auto=format&fit=crop"
-                  alt=""
-              />
-
-              <div className="project-card">
-
-                  <span>FEATURED PROJECT</span>
-
-                  <h3>Luxury Architecture</h3>
-
-                  <p>
-                      UI / UX • Branding
-                  </p>
-
-              </div>
-
-          </div>
+        </div>
 
       </div>
 
-      <div className="scroll-indicator">
-          <span>SCROLL</span>
-          <div className="scroll-line"></div>
-      </div>
-
-  </section>
+    </section>
   );
 }
